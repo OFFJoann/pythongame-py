@@ -1,5 +1,5 @@
 #!/bin/bash
-#comooo
+#comooocdc
 old=""
 count=0
 for file in $(ls /home/nas/share/CACHEDEV1/backup/Backup); do
