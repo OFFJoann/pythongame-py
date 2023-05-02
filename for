@@ -1,39 +1,53 @@
 #!/bin/bash
-#comooocdc
+
 old=""
 count=0
-for file in $(ls /home/nas/share/CACHEDEV1/backup/Backup); do
+date=$(date +"%Y%m%d")
+
+
+#controller power on and off
+power() {
+ifconfig ens33 up
+ifconfig lo up
+}
+power
+off() {
+ifconfig ens33 down
+ifconfig lo down
+}
+
+
+#Validation if a backup has already been made to date
+for validation in $(ls /home/nas/system); do
+	if [ $count -eq 0 ]; then
+		sum2=$((count=$count+1))
+	fi
+	if [ $(($validation)) -eq $(($date)) ]; do
+		echo today's backup has already been done
+		off
+		exit
+	fi
+done
+
+#Older backup validation for deletion
+
+for file in $(ls /home/nas/system); do
 	if [ $count -eq 0 ]; then
 		old=$file
 	fi
 	if [ $(($file)) -lt $(($old)) ]; then
 		old=$file
 	fi
-
 	sum=$((count=$count+1))
 done
-oldd=""
-countt=0
-for filee in $(ls /home/nas/share/CACHEDEV2/data/Backup); do
-	if [ $countt -eq 0 ]; then
-		oldd=$filee
-	fi
-	if [ $(($filee)) -lt $(($oldd)) ]; then
-		oldd=$filee
-	fi
-        sum=$((countt=$countt+1))
-done
-archive=$(date +"%Y%m%d")
-if [ $old -lt $oldd ]; then
-	rm -r /home/nas/share/CACHEDEV1/backup/Backup/$old
-		mkdir /home/nas/share/CACHEDEV1/backup/Backup/$archive
-			sshpass -p 123 scp -r server@192.168.18.254:/home/server/Vol_1 /home/nas/share/CACHEDEV1/backup/Backup/$archive
-				echo se borro $old y se creo $archive
-	               else 
-		rm -r /home/nas/share/CACHEDEV2/data/Backup/$oldd
-			mkdir /home/nas/share/CACHEDEV2/data/Backup/$archive
-				sshpass -p 123 scp -r server@192.168.18.254:/home/server/Vol_1 /home/nas/share/CACHEDEV2/data/Backup/$archive
-					echo se borro $oldd y se creo $archive
-fi
+
+#transfer file
+transfer() {
+	rm -r /home/nas/system/$old
+	mkdir /home/nas/system/$date
+	sshpass -p "123" scp -r server@192.168.18.254:/home/server/Vol_1 /home/nas/system/$date
+}
+
 echo el backup ha terminado
+off
 
