@@ -134,8 +134,9 @@ while marcador_sis < 3 or marcador_jug < 3:
     if marcador_jug == 3:
         print("!!Ganador Jugador¡¡ felicitaciones")
         time.sleep(5)
-        sys.exit()
         limpiar_consola()
+        sys.exit()
+        
     elif marcador_sis == 3:
         print("!!El sistema te ha ganado¡¡")
         time.sleep(5)
