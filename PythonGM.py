@@ -21,7 +21,7 @@ nombre_jugador = str(input(" ¿Cual es tu primer nombre? : "))
 #Variables marcadores
 marcador_sis= 0
 marcador_jug= 0
-while marcador_sis < 3 or marcador_jug < 3:
+while marcador_sis <= 3 or marcador_jug <= 3:
     limpiar_consola()
 
     #Variables selectores
@@ -137,10 +137,13 @@ while marcador_sis < 3 or marcador_jug < 3:
         print(f"!!Ganador {nombre_jugador}¡¡ felicitaciones")
         time.sleep(5)
         limpiar_consola()
-        sys.exit()
+        break
         
     elif marcador_sis == 3:
         print("!!El sistema te ha ganado¡¡")
         time.sleep(5)
         limpiar_consola()
-        sys.exit()
+        break
+time.sleep(1)
+print("MUCHAS GRACIAS POR JUGAR ESTE JUEGO TAN GENIAL")
+time.sleep(3)
