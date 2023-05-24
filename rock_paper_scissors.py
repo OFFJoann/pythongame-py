@@ -16,6 +16,8 @@ time.sleep(5)
 print("!ESTO ES PIEDRA PAPEL O TIJERA¡ \n")
 time.sleep(2)
 
+nombre_jugador = str(input(" ¿Cual es tu primer nombre? : "))
+
 #Variables marcadores
 marcador_sis= 0
 marcador_jug= 0
@@ -41,7 +43,7 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "piedra" and selector_jug == 1:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= piedra 
+        {nombre_jugador}= piedra 
         
         !EMPATE¡ \n""")
         time.sleep(4)
@@ -50,7 +52,7 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "papel" and selector_jug == 2:
         print(f"""
         sistema= {selector_sis}
-        jugardor= papel 
+        {nombre_jugador}= papel 
         
         !EMPATE¡ \n""")
         time.sleep(4)
@@ -59,7 +61,7 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "tijera" and selector_jug == 3:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= tijera 
+        {nombre_jugador}= tijera 
         
         !EMPATE¡ \n""")
         time.sleep(4)
@@ -68,9 +70,9 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "piedra" and selector_jug == 2:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= papel 
+        {nombre_jugador}= papel 
         
-        !RONDA DE JUGADOR¡ \n""")
+        !RONDA DE {nombre_jugador.upper()}¡ \n""")
         marcador_jug+=1
         time.sleep(4)
         limpiar_consola()
@@ -78,7 +80,7 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "piedra" and selector_jug == 3:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= tijera 
+        {nombre_jugador}= tijera 
         
         !RONDA DE SISTEMA¡ \n""")
         marcador_sis+=1
@@ -88,7 +90,7 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "papel" and selector_jug == 1:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= piedra
+        {nombre_jugador}= piedra
         
         !RONDA DE SISTEMA¡ \n""")
         marcador_sis+=1
@@ -98,9 +100,9 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "papel" and selector_jug == 3:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= tijera 
+        {nombre_jugador}= tijera 
         
-        !RONDA DE JUGADOR¡ \n""")
+        !RONDA DE {nombre_jugador.upper()}¡ \n""")
         marcador_jug+=1
         time.sleep(4)
         limpiar_consola()
@@ -108,9 +110,9 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "tijera" and selector_jug == 1:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= piedra
+        {nombre_jugador}= piedra
         
-        !RONDA DE JUGADOR¡ \n""")
+        !RONDA DE {nombre_jugador.upper()}¡ \n""")
         marcador_jug+=1
         time.sleep(4)
         limpiar_consola()
@@ -118,7 +120,7 @@ while marcador_sis < 3 or marcador_jug < 3:
     elif selector_sis == "tijera" and selector_jug == 2:
         print(f"""
         sistema= {selector_sis} 
-        jugardor= papel 
+        {nombre_jugador}= papel 
         
         !RONDA DE SISTEMA¡ \n""")
         marcador_sis+=1
@@ -128,11 +130,11 @@ while marcador_sis < 3 or marcador_jug < 3:
     print(f"""
          !MARCADOR¡
     Sistema: {marcador_sis} puntos 
-    Jugador: {marcador_jug} puntos \n""")
+    {nombre_jugador}: {marcador_jug} puntos \n""")
     time.sleep(3)
 
     if marcador_jug == 3:
-        print("!!Ganador Jugador¡¡ felicitaciones")
+        print(f"!!Ganador {nombre_jugador}¡¡ felicitaciones")
         time.sleep(5)
         limpiar_consola()
         sys.exit()
