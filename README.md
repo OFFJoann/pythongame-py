@@ -1,1 +1,2 @@
-Esto es el viejo juego de piedra papel y tijera con python
+# rock, paper or scissors
+* run with python PythonGM.py
